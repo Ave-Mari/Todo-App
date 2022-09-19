@@ -4,3 +4,24 @@ h1 {
   color: $primary-color;
   background-color: $bg;
 }
+
+.todo-section {
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 10%;
+}
+
+.todo-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid black;
+
+  p {
+    flex-grow: 2;
+  }
+}
