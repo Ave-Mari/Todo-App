@@ -56,6 +56,22 @@ function App() {
   //     </main>
   //   ) 
   // }
+
+  
+// .task-checked {
+//   text-decoration: line-through;
+// }
+// .task-unchecked {
+//   text-decoration: none;
+// }
+
+const chechedStyle = {
+  textDecoration: 'line-through'
+}
+const unchechedStyle = {
+  textDecoration: 'none'
+}
+
  
     return (
       <>
@@ -76,11 +92,11 @@ function App() {
                   <p className="no-task">There is no task...</p>
                 )}
                 {tasks.map((item) => {
-                  const {id, task} = item;
+                  const {id, task, completed} = item;
                   return (
                     <ul key={id} className="todo-list">
                       <li className="todo-item" >
-                        <p className={todo.completed ? "task-checked" : "uncheсked"}>
+                        <p className={completed ? 'task-checked' : 'task-unchecked'}>
                           {task}
                           </p> 
                           <div className="todo-checkbox-block">
