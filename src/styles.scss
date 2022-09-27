@@ -12,22 +12,114 @@ h1 {
 }
 
 .todo-section {
-  width: 300px;
+  width: 35%;
   margin: 0 auto;
-  padding-top: 10%;
+  padding-top: 7%;
+}
+
+.task-label {
+  font-size: 22px;
+  padding-right: 9px;
+}
+
+.form-block {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  width: 68%;
+  align-items: center;
+}
+.add-task-input {
+  border: none;
+  padding: 11px;
+  background: rgb(205, 225, 243);
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.no-task {
+  margin: 0 auto;
 }
 
 .todo-list {
   list-style: none;
   padding-left: 0;
+  width: 100%;
 }
 
 .todo-item {
   display: flex;
   justify-content: flex-end;
-  border: 1px solid black;
+  border: 3px dotted rgb(78, 109, 160);
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 9px;
+  background-color: #f3f7ff;
 
   p {
+    font-family: Arial, Helvetica, sans-serif;
     flex-grow: 2;
   }
+}
+
+.btn-add-task {
+	background: #6591e4;
+	border: 3px solid #3958b4;
+	border-radius: 4px;
+	font-size: 17px;
+	font-family: 'Aleo', serif;
+	color: #fff;
+	padding: 4px 11px;
+}
+
+
+.task-checked {
+  text-decoration: line-through;
+}
+.task-unchecked {
+  text-decoration: none;
+}
+
+.todo-item-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  &:hover {
+    background: rgb(250, 182, 193);
+  }
+  cursor: pointer;
+}
+
+.todo-checkbox-block {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 5px;
+  &:hover {
+    background: rgb(151, 218, 147);
+  }
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+}
+
+.todo-checkbox {
+  width: 15px;
+  height: 15px;
 }
