@@ -57,21 +57,6 @@ function App() {
   //   ) 
   // }
 
-  
-// .task-checked {
-//   text-decoration: line-through;
-// }
-// .task-unchecked {
-//   text-decoration: none;
-// }
-
-const chechedStyle = {
-  textDecoration: 'line-through'
-}
-const unchechedStyle = {
-  textDecoration: 'none'
-}
-
  
     return (
       <>
@@ -85,8 +70,7 @@ const unchechedStyle = {
               </div>             
               <button type="submit" className="btn-add-task">Add Task</button>
                </form>
-          </div>
-            
+          </div>            
                <article className="article"> 
                 {tasks.length <= 0 && (
                   <p className="no-task">There is no task...</p>
