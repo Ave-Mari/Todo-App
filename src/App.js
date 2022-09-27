@@ -3,19 +3,19 @@ import { hot } from 'react-hot-loader/root';
 import Loading from './components/Loading';
 
 
-
 function App() {
   const [loading, setLoading] = useState(false);
-  const [todo, setTodo] = useState({});
 
-  const [doneTaskStyle, setDoneTaskStyle] = useState('');
+  const [todo, setTodo] = useState({
+    task: '',
+    completed: false
+  });  
   
   const [tasks, setTasks] = useState([]);
 
+  const [checked, setChecked] = useState(false);
+
   
-
-
-
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -26,68 +26,86 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (todo.task) {
-      const newTodo = {...todo, id: tasks.length + 1, done: false};
+      const newTodo = {...todo, id: new Date().valueOf(), completed: false };
       setTasks([...tasks, newTodo]);
       setTodo({task: ''});
-      console.log(tasks);
     }
   }
 
   const removeItem = (id) => { 
     console.log('click remove btn')
-    const newTasks = tasks.filter((i) =>  i['id'] !== id);    
+    const newTasks = tasks.filter((i) =>  i.id !== id);     
     setTasks(newTasks);
-    console.log('after removing item:' + newTasks);    
+  };
+
+  const taskChecked = (id) => {
+    tasks.map((item) => {
+       if (item.id === id) {      
+        item.completed = !item.completed;          
+       }
+       return item;
+    }
+    ); 
+    setTasks([...tasks]);
   }
 
-  const taskIsDone = (id) => {
-    console.log('click done btn');
-    tasks.filter((i) => {      
-      if (i['id'] === id) {
-       i['done'] = true;
-     //console.log('merge prop:' + newTask);
-       
-      }
-    })
-    
-  }
-
-  useEffect(() => {
-    if (todo.done) {
-      setDoneTaskStyle('line-through');
-    }  //else {
-      //document.querySelector('.todo-item').style.cssText = 'text-decoration: none;';
-   // }
-   
-  }, [doneTaskStyle]);
-  
-  
-
-  if (loading) {
-    return (
-      <main>
-        <Loading />
-      </main>
-    ) 
-  }
+  //  if (loading) {
+  //   return (s
+  //     <main>
+  //       <Loading />
+  //     </main>
+  //   ) 
+  // }
  
     return (
       <>
         <main>
           <section className="todo-section"> 
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="task">Task</label>
-              <input type="text" id="task" name="task" value={todo.task} onChange={handleChange}/>
-              <button type="submit">Add Task</button>
+          <div className="form-block">
+            <form onSubmit={handleSubmit} className="form">
+              <div className="input-block">
+              <label htmlFor="task" className="task-label">Task</label>
+              <input type="text" id="task" name="task" value={todo.task} onChange={handleChange} className='add-task-input'/>
+              </div>             
+              <button type="submit" className="btn-add-task">Add Task</button>
                </form>
-               <article> 
+          </div>
+            
+               <article className="article"> 
+                {tasks.length <= 0 && (
+                  <p className="no-task">There is no task...</p>
+                )}
                 {tasks.map((item) => {
                   const {id, task} = item;
                   return (
                     <ul key={id} className="todo-list">
-                      <li className="todo-item" style={{textDecoration: doneTaskStyle}}>{task}</li>
-                      <button onClick={() => removeItem(id)}>🗑️</button>
-                      <button onClick={() => taskIsDone(id)}>✅</button>
+                      <li className="todo-item" >
+                        <p className={todo.completed ? "task-checked" : "uncheсked"}>
+                          {task}
+                          </p> 
+                          <div className="todo-checkbox-block">
+                          <input 
+                          type='checkbox' 
+                          className="todo-checkbox"
+                          checked={checked[id]}
+                          onChange={(e) => {   
+                          setChecked(e.target.checked);
+                          taskChecked(id);
+
+                       }}
+                       />
+                          </div>
+                       
+                      <button className="todo-item-btn" onClick={() => 
+                      setTimeout(() => {
+                        removeItem(id)
+                      }, 800)
+                        
+                        }>
+                          🗑️
+                          </button>
+                      </li>
+                      
                     </ul>
                   )
                 })}
@@ -100,3 +118,4 @@ function App() {
 }
 
 export default hot(App);
+
