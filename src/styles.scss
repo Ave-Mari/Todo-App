@@ -4,12 +4,6 @@ body {
   font-family: 'Aleo', serif;
 }
 
-$primary-color: white;
-$bg: black;
-h1 {
-  color: $primary-color;
-  background-color: $bg;
-}
 
 .todo-section {
   width: 35%;
@@ -57,6 +51,7 @@ h1 {
   list-style: none;
   padding-left: 0;
   width: 100%;
+  cursor: grab;
 }
 
 .todo-item {
