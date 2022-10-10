@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Reorder } from "framer-motion";
+//import { Reorder } from "framer-motion";
 import { hot } from 'react-hot-loader/root';
 import Loading from './components/Loading';
 
@@ -16,7 +16,7 @@ function App() {
 
   const [current, setCurrent] = useState(null);
 
-  
+//function to add properties to object
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -24,6 +24,7 @@ function App() {
     setTodo({...todo, [name]:value})
   }
 
+//function to add todo to array of tasks
   const handleSubmit = (e) => {
     e.preventDefault();
     if (todo.task) {
@@ -33,12 +34,14 @@ function App() {
     }
   }
 
+//function to remove todo from list:
   const removeItem = (id) => { 
     console.log('click remove btn')
     const newTasks = tasks.filter((i) =>  i.id !== id);     
     setTasks(newTasks);
   };
 
+//function to set todo checked:
   const taskChecked = (id) => {
     tasks.map((item) => {
        if (item.id === id) {      
@@ -50,27 +53,29 @@ function App() {
     setTasks([...tasks]);
   }
 
+
+  
+//functions to run drag-and-drop:
   const dragStartHandler = (e, item) => {
-    console.log('drag', item)
+    console.log('drag', item);
+    setCurrent(item);
   }
 
-  const dragEndHandker = (e) => {
+  const dragEndHandler = (e) => {
     e.target.style.background = '#f3f7ff';
   }
   const dragOverHandler = (e) => {
     e.preventDefault();
     e.target.style.background = '#bac9e8';
-
-
   }
 
   const dropHandler = (e, item) => {
     e.preventDefault();
     setTasks(tasks.map(i => {
       if (i.id === item.id) {
-        return {...i, order: todo.order}
+        return {...i, order: current.order}
       }
-      if (i.id === todo.order) {
+      if (i.id === current.id) {
         return {...i, order: item.order}
       }
       return i;
@@ -120,8 +125,8 @@ function App() {
                       draggable={true} 
                       className="todo-list"
                       onDragStart={(e) => dragStartHandler(e, item)}
-                      onDragLeave={(e) => dragEndHandker(e)}
-                      onDragEnd={(e) => dragEndHandker(e)}
+                      onDragLeave={(e) => dragEndHandler(e)}
+                      onDragEnd={(e) => dragEndHandler(e)}
                       onDragOver={(e) => dragOverHandler(e)}
                       onDrop={(e) => dropHandler(e, item)}
                     >
