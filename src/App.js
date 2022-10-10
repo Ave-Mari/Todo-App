@@ -16,6 +16,12 @@ function App() {
 
   const [current, setCurrent] = useState(null);
 
+
+  //function to edit document title
+  useEffect(() => {
+    return document.title = "Todo app 📝"
+ }, []);
+
 //function to add properties to object
   const handleChange = (e) => {
     const name = e.target.name;
