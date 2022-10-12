@@ -6,9 +6,9 @@ body {
 
 
 .todo-section {
-  width: 35%;
+  width: 40%;
   margin: 0 auto;
-  padding-top: 7%;
+  padding-top: 5%;
 }
 
 .task-label {
@@ -19,20 +19,25 @@ body {
 .form-block {
   display: flex;
   justify-content: center;
-  padding-bottom: 26px;
+  padding-bottom: 13px;
 }
 
 .form {
   display: flex;
   justify-content: space-between;
-  width: 68%;
+  width: 76%;
   align-items: center;
 }
 .add-task-input {
+  width: 77%;  
   border: none;
   padding: 11px;
   border-radius: 5px;
   background: rgb(205, 225, 243);
+}
+
+.input-block {
+	width: 73%;
 }
 
 .article {
@@ -53,7 +58,6 @@ body {
   width: 100%;
   cursor: grab;
   background: #f3f7ff;
- // background: #bac9e8;
   border: 4px dotted #2c448e;
   border-radius: 9px;
 }
@@ -78,7 +82,7 @@ body {
 	background: #6591e4;
 	border: 3px solid #2c448e;
 	border-radius: 4px;
-	font-size: 17px;
+	font-size: 19px;
 	font-family: 'Aleo', serif;
 	color: #fff;
 	padding: 4px 11px;
