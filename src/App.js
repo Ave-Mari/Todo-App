@@ -141,6 +141,7 @@ function App() {
                           {task}
                           </p> 
                           <div className="todo-checkbox-block">
+                            <label className="todo-checkbox-label">
                           <input 
                           type='checkbox' 
                           className="todo-checkbox"
@@ -148,9 +149,9 @@ function App() {
                           onChange={(e) => {   
                           setChecked(e.target.checked);
                           taskChecked(id);
-
                        }}
                        />
+                       </label>
                           </div>
                        
                       <button className="todo-item-btn" onClick={() => 
