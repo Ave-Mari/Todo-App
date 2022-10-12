@@ -113,7 +113,7 @@ body {
   cursor: pointer;
 }
 
-.todo-checkbox-block {
+.todo-checkbox-label {
   width: 35px;
   height: 35px;
 
@@ -132,4 +132,36 @@ body {
 .todo-checkbox {
   width: 15px;
   height: 15px;
+}
+
+@media screen and (max-width: 1320px) {
+  .todo-section {
+    width: 55%;
+  }
+
+  .task-label {
+    font-size: 26px;
+  }
+
+  .btn-add-task {
+    font-size: 21px;
+  }
+
+  .todo-item {
+    p {
+      font-size: 21px;
+    }
+  }
+
+  .todo-checkbox-label {
+    width: 41px;
+    height: 41px;
+  }
+
+  .todo-item-btn {
+    width: 41px;
+    height: 41px;
+   }
+
+  
 }
