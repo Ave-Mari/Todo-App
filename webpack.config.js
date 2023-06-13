@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: [
-    'react-hot-loader/patch',
+    // 'react-hot-loader/patch',
     './src/index.js'
   ],
   output: {
@@ -74,7 +74,8 @@ const config = {
   devServer: {
     'static': {
       directory: './dist'
-    }
+    },
+    historyApiFallback: true
   }
 };
 
