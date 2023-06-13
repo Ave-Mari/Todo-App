@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-//import { Reorder } from "framer-motion";
-import { hot } from 'react-hot-loader/root';
-import Loading from './components/Loading';
+//import { hot } from 'react-hot-loader/root';
+//components
+import Loading from './components/Loading/Loading';
+import AddTaskForm from "./components/AddTaskFrom/AddTaskForm";
+import Tasks from "./components/Tasks/Tasks";
 
 
 function App() {
@@ -109,71 +111,31 @@ function App() {
     return (
       <>
         <main>
-          <section className="todo-section"> 
-          <div className="form-block">
-            <form onSubmit={handleSubmit} className="form">
-              <div className="input-block">
-              <label htmlFor="task" className="task-label">Task</label>
-              <input type="text" id="task" name="task" value={todo.task} onChange={handleChange} className='add-task-input'/>
-              </div>             
-              <button type="submit" className="btn-add-task">Add Task</button>
-               </form>
-          </div>            
-               <article className="article"> 
-                {tasks.length <= 0 && (
-                  <p className="no-task">There is no task...</p>
-                )}
-                {tasks.sort(sortTodos).map((item) => {
-                  const {id, task, completed} = item;
-                  return (
-                    <ul 
-                      key={id} 
-                      draggable={true} 
-                      className="todo-list"
-                      onDragStart={(e) => dragStartHandler(e, item)}
-                      onDragLeave={(e) => dragEndHandler(e)}
-                      onDragEnd={(e) => dragEndHandler(e)}
-                      onDragOver={(e) => dragOverHandler(e)}
-                      onDrop={(e) => dropHandler(e, item)}
-                    >
-                      <li className="todo-item" >
-                        <p className={completed ? 'task-checked' : 'task-unchecked'}>
-                          {task}
-                          </p> 
-                          <div className="todo-checkbox-block">
-                            <label className="todo-checkbox-label">
-                          <input 
-                          type='checkbox' 
-                          className="todo-checkbox"
-                          checked={checked[id]}
-                          onChange={(e) => {   
-                          setChecked(e.target.checked);
-                          taskChecked(id);
-                       }}
-                       />
-                       </label>
-                          </div>
-                       
-                      <button className="todo-item-btn" onClick={() => 
-                      setTimeout(() => {
-                        removeItem(id)
-                      }, 800)
-                        
-                        }>
-                          🗑️
-                          </button>
-                      </li>
-                      
-                    </ul>
-                  )
-                })}
-               </article>
-          </section>
+       
+          <AddTaskForm 
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              todo={todo}
+          />       
+          <Tasks 
+          tasks={tasks}
+          checked={checked}
+          removeItem={removeItem}
+          taskChecked={taskChecked}
+          dragStartHandler={dragStartHandler}
+          dragEndHandler={dragEndHandler}
+          dragOverHandler={dragOverHandler}
+          dropHandler={dropHandler}
+          sortTodos={sortTodos}
+          
+          />
+              
+       
         </main>
       </>
     );
 
 }
 
-export default hot(App);
+export default App;
 
