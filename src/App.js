@@ -4,16 +4,20 @@ import React, { useState, useEffect } from "react";
 import Loading from './components/Loading/Loading';
 import AddTaskForm from "./components/AddTaskFrom/AddTaskForm";
 import Tasks from "./components/Tasks/Tasks";
+import FilterButtons from "./components/FilterButtons/FilterButtons";
 
 
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [todo, setTodo] = useState({
     task: '',
     completed: false
   });    
   const [tasks, setTasks] = useState([]);
+
+  const [sortedTasks, setSortedTasks] = useState(tasks);
+
   const [checked, setChecked] = useState(false);
 
   const [current, setCurrent] = useState(null);
@@ -38,6 +42,7 @@ function App() {
     if (todo.task) {
       const newTodo = {...todo, id: new Date().valueOf(), completed: false, order: tasks.length + 1 };
       setTasks([...tasks, newTodo]);
+      setSortedTasks([...tasks, newTodo]);
       setTodo({task: ''});
     }
   }
@@ -47,6 +52,7 @@ function App() {
     console.log('click remove btn')
     const newTasks = tasks.filter((i) =>  i.id !== id);     
     setTasks(newTasks);
+    setSortedTasks(newTasks);
   };
 
 //function to set todo checked:
@@ -59,7 +65,31 @@ function App() {
     }
     ); 
     setTasks([...tasks]);
+    setSortedTasks([...tasks]);
+  };
+
+  //show all
+  const showAll   = () => {
+    setSortedTasks(tasks);
   }
+
+//show active tasks
+  const showActive = () => {
+    const activeTasks = tasks.filter((item) => {
+     return item.completed === false;
+    })
+
+    setSortedTasks(activeTasks);
+}
+
+//show completed tasks
+const showCompleted = () => {
+  const completedTasks = tasks.filter((item) => {
+    return item.completed === true;
+   })
+
+   setSortedTasks(completedTasks); 
+}
 
 
   
@@ -99,14 +129,16 @@ function App() {
     }
   }
 
-  //  if (loading) {
-  //   return (s
-  //     <main>
-  //       <Loading />
-  //     </main>
-  //   ) 
-  // }
-
+   if (loading) {
+    setTimeout(() => {
+      return (
+        <main>
+          <Loading />
+        </main>
+      ) 
+    }, 6000);
+    setLoading(false)
+  }
  
     return (
       <>
@@ -118,8 +150,10 @@ function App() {
               todo={todo}
           />       
           <Tasks 
+          todo={todo}
           tasks={tasks}
           checked={checked}
+          sortedTasks={sortedTasks}
           removeItem={removeItem}
           taskChecked={taskChecked}
           dragStartHandler={dragStartHandler}
@@ -127,6 +161,13 @@ function App() {
           dragOverHandler={dragOverHandler}
           dropHandler={dropHandler}
           sortTodos={sortTodos}
+          
+          />
+
+          <FilterButtons 
+          showAll={showAll}
+          showActive={showActive}
+          showCompleted={showCompleted}
           
           />
               

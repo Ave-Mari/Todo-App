@@ -1,9 +1,12 @@
 import React from 'react';
 import { Wrapper } from './Tasks.styles'
 
-export default function Tasks( { tasks, 
-    checked,
+export default function Tasks( { 
+                                todo,
+                                tasks, 
+                                checked,
                                 removeItem, 
+                                sortedTasks,
                                 taskChecked, 
                                 sortTodos,
                                 dragStartHandler, 
@@ -11,12 +14,13 @@ export default function Tasks( { tasks,
                                 dragOverHandler, 
                                 dropHandler 
                                 } ) {
+
   return (
     <Wrapper>
-         {tasks.length <= 0 && (
+         {sortedTasks.length == 0 && (
                   <p className="no-task">There is no task...</p>
                 )}
-                {tasks.sort(sortTodos).map((item) => {
+                {sortedTasks.sort(sortTodos).map((item) => {
                   const {id, task, completed} = item;
                   return (
                     <ul 
@@ -39,10 +43,7 @@ export default function Tasks( { tasks,
                           type='checkbox' 
                           className="todo-checkbox"
                           checked={checked[id]}
-                          onChange={(e) => {   
-                          setChecked(e.target.checked);
-                          taskChecked(id);
-                       }}
+                          onChange={(e) => {taskChecked(id)}}
                        />
                        </label>
                           </div>
