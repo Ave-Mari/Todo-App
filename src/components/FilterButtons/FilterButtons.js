@@ -1,9 +1,7 @@
 import React from 'react';
 import { Wrapper } from './FilterButtons.styles'
 
-export default function FilterButtons({showAll, showActive, showCompleted}) {
-
-   
+export default function FilterButtons({showAll, showActive, showCompleted}) {  
 
   return (
     <Wrapper>
