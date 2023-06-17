@@ -164,12 +164,17 @@ const showCompleted = () => {
           
           />
 
+          {sortedTasks.length > 0 ? 
           <FilterButtons 
           showAll={showAll}
           showActive={showActive}
-          showCompleted={showCompleted}
-          
+          showCompleted={showCompleted}          
           />
+          : 
+          null
+          }
+
+          
               
        
         </main>
