@@ -6,6 +6,17 @@ export const Wrapper = styled.section`
         justify-content: center;
         padding-bottom: 13px;
 
+        button {
+          background: #6591e4;
+          border: 3px solid #2c448e;
+          border-radius: 4px;
+          font-size: 21px;
+          font-family: 'Aleo', serif;
+          color: #fff;
+          padding: 8px 12px;
+          cursor: pointer;
+      }
+
         .form {
             display: flex;
             justify-content: space-between;
