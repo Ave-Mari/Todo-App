@@ -11,14 +11,14 @@ export const Wrapper = styled.section`
         overflow-y: scroll;
 
         ::-webkit-scrollbar {
-          background: rgb(191, 195, 230);  
+          background: #fff;  
           width: 8px;    
         }
         ::-webkit-scrollbar-thumb {
           background: rgb(197, 127, 211);  
         }
 
-        scrollbar-color: rgb(197, 127, 211) rgb(191, 195, 230);
+        scrollbar-color: rgb(197, 127, 211) #fff;
         scrollbar-width: thin;
 
         display: flex;
