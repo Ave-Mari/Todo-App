@@ -1,4 +1,6 @@
 # Todo-app
 
 This is a simple app you can use to create tasks you need to do.
-![todo app](https://github.com/Ave-Mari/Todo-App/assets/66331611/b4c9b935-c29e-40d6-9eed-f6f1ebcc972a)
+![изображение](https://github.com/Ave-Mari/Todo-App/assets/66331611/51c47e20-88b7-472b-9c99-c57f1ddcce05)
+You can also filter your tasks using "All", "Active", "Completed" buttons.
+
